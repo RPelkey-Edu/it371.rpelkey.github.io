@@ -11,23 +11,21 @@
   </head>
   <!-- Main page content -->
   <body>
-    <!-- Navigation bar element-->
-    <nav>
-      <ul>
-        <!-- Stuck with directing to index.html due to Github handling "/" poorly -->
-        <li><a href="index.html">Home</a></li>
-        <li><a href="beyblade-collection.html">Collection</a></li>
-        <li><a href="beyblade-randomizer.html">Randomizer</a></li>
-        <li><a href="beyblade-wiki.html">Wiki</a></li>
-        <li><a href="references.html">References</a></li>
-      </ul>
-    </nav>
+    <!-- JS dynamic navbar will be loaded into this container -->
+    <script src="navbar.js"></script>
+    <div id="navbar-container"></div>
     <h1>Beyblade Wiki</h1>
     <hr />
     <p>
-      This is the intended location for my beyblade wiki-like functionality. I'm
-      currently looking at https://github.com/gollum/gollum or
-      https://squidfunk.github.io/mkdocs-material/ as my wiki engine options.
+      This is the intended location for my beyblade wiki-like functionality.
+    </p>
+    <p>
+      I'm currently looking at
+      <a href="https://github.com/gollum/gollum" target="_blank">Gollum</a> or
+      <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank"
+        >MkDocs Material</a
+      >
+      as my wiki engine options.
     </p>
   </body>
 </html>
