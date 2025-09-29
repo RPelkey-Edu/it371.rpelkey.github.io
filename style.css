@@ -41,3 +41,18 @@ nav ul li a:active {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
   border-color: #555;
 }
+/* Style for the randomizer button */
+.randomize-btn {
+  padding: 10px 20px;
+  font-size: 1.1em;
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-bottom: 18px;
+}
+.randomize-btn:active {
+  background: #388e3c;
+}
