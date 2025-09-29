@@ -16,7 +16,39 @@
     <div id="navbar-container"></div>
     <h1>Beyblade Randomizer</h1>
     <hr />
-    <p>This is the intended location for my beyblade randomizer tool.</p>
-    <p>I'm planning to write a custom JS app for this functionality.</p>
+    <button
+      id="randomize-btn"
+      style="
+        padding: 10px 20px;
+        font-size: 1.1em;
+        background: #1976d2;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.2s;
+        margin-bottom: 18px;
+      "
+    >
+      Generate Random Build
+    </button>
+    <table style="margin-top: 0; border-collapse: collapse">
+      <tr>
+        <td id="partA" style="padding: 8px 24px; border: 1px solid #ccc">
+          Beyblade Part A xx
+        </td>
+        <td id="partB" style="padding: 8px 24px; border: 1px solid #ccc">
+          Beyblade Part B xx
+        </td>
+        <td id="partC" style="padding: 8px 24px; border: 1px solid #ccc">
+          Beyblade Part C xx
+        </td>
+      </tr>
+    </table>
+    <script src="randomizer.js"></script>
+    <p style="margin-top: 24px; color: #666; font-size: 0.95em">
+      This tool generates a random Beyblade build. Click the button to randomize
+      the parts!
+    </p>
   </body>
 </html>
