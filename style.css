@@ -29,6 +29,12 @@ nav ul li a {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   transition: box-shadow 0.2s, border-color 0.2s;
 }
+nav ul li a.active-nav {
+  background: rgb(85, 107, 47);
+  color: #fff;
+  border-color: rgb(85, 107, 47);
+  font-weight: 700;
+}
 /* Add hover effect to navigation links */
 nav ul li a:hover {
   text-decoration: underline;
