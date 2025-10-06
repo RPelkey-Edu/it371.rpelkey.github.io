@@ -19,14 +19,36 @@
     <button id="randomize-btn" class="randomize-btn">
       Generate Random Build
     </button>
+    <div id="randomize-tooltip"></div>
     <table class="randomizer-table">
       <tr>
-        <td id="partA" class="randomizer-td">Beyblade Part A xx</td>
-        <td id="partB" class="randomizer-td">Beyblade Part B xx</td>
-        <td id="partC" class="randomizer-td">Beyblade Part C xx</td>
+        <td id="partA" class="randomizer-td">Ready</td>
+        <td id="partB" class="randomizer-td">Ready</td>
+        <td id="partC" class="randomizer-td">Ready</td>
+      </tr>
+      <tr>
+        <td id="partA-img" class="randomizer-td">
+          <img
+            id="img-partA"
+            style="max-width: 80px; max-height: 80px; display: none"
+          />
+        </td>
+        <td id="partB-img" class="randomizer-td">
+          <img
+            id="img-partB"
+            style="max-width: 80px; max-height: 80px; display: none"
+          />
+        </td>
+        <td id="partC-img" class="randomizer-td">
+          <img
+            id="img-partC"
+            style="max-width: 80px; max-height: 80px; display: none"
+          />
+        </td>
       </tr>
     </table>
     <script src="randomizer.js"></script>
+    <script src="randomize-tooltip.js"></script>
     <p class="randomizer-info">
       This tool generates a random Beyblade build. Click the button to randomize
       the parts! This is an initial proof of concept to later be fleshed out.

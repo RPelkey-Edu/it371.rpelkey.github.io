@@ -1,18 +1,10 @@
-/* Style for the left column (image/filename) cells in the wiki table */
-.part-image-td {
-  width: 120px;
-  height: 120px;
-  text-align: center;
-  vertical-align: middle;
-}
 /* Import Roboto Medium font from Google Fonts */
 @import url("https://fonts.googleapis.com/css?family=Roboto:500&display=swap");
-
 /* Set base font and background for the entire page */
 body {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: 500;
-  background: #d8d7d7;
+  background: rgb(216, 215, 215);
 }
 /* Style the navigation bar's unordered list */
 nav ul {
@@ -28,25 +20,25 @@ nav ul li {
 /* Style the navigation links as boxed buttons */
 nav ul li a {
   text-decoration: none;
-  color: blue;
+  color: rgb(58, 73, 69);
   display: inline-block;
   padding: 8px 16px;
-  border: 1px solid #ccc;
+  border: 1px solid rgb(204, 204, 204);
   border-radius: 6px;
-  background: #fff;
+  background: rgb(241, 241, 241);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   transition: box-shadow 0.2s, border-color 0.2s;
 }
 /* Add hover effect to navigation links */
 nav ul li a:hover {
   text-decoration: underline;
-  border-color: #888;
+  border-color: rgb(136, 136, 136);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 /* Add shadow and border color on click (active) */
 nav ul li a:active {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-  border-color: #555;
+  border-color: rgb(85, 85, 85);
 }
 /* Style for the randomizer button */
 .randomize-btn {
@@ -54,30 +46,30 @@ nav ul li a:active {
   margin: 0 auto 18px auto;
   padding: 10px 20px;
   font-size: 1.1em;
-  background: #1976d2;
-  color: #fff;
+  background: rgb(85, 107, 47);
+  color: rgb(241, 241, 241);
   border: none;
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.2s;
 }
 .randomize-btn:active {
-  background: #388e3c;
+  background: rgb(56, 142, 60);
+  background: rgb(56, 142, 60);
 }
-
 /* Center the randomizer info text */
 .randomizer-info {
   margin-top: 24px;
-  color: #666;
+  color: rgb(102, 102, 102);
   font-size: 0.95em;
   text-align: center;
 }
 /* Style for the randomizer table */
 .randomizer-table {
   margin: 24px auto 0 auto;
-  border-collapse: separate;
+  border-collapse: collapse;
   border-spacing: 0;
-  background: #fff;
+  background: rgb(241, 241, 241);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   min-width: 480px;
@@ -87,16 +79,19 @@ nav ul li a:active {
   border-radius: 12px;
 }
 .randomizer-td {
-  padding: 24px 40px;
-  border: 2px solid #1976d2;
+  padding: 12px 18px;
+  border: 2px solid rgb(85, 107, 47);
   font-size: 1.25em;
   font-weight: 500;
   text-align: center;
-  background: #f5faff;
+  background: rgb(241, 241, 241);
   transition: background 0.2s, border-color 0.2s;
+  max-width: 160px;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 .randomizer-td:not(:last-child) {
-  border-right: none;
+  border-right-width: 0;
 }
 /* Style for the inner part details table in the wiki */
 .part-details-table {
@@ -106,7 +101,7 @@ nav ul li a:active {
 }
 .part-details-td {
   padding: 6px;
-  background: #fafdff;
+  background: rgb(241, 241, 241);
   font-size: 1em;
   font-weight: 500;
   text-align: left;
@@ -115,27 +110,46 @@ nav ul li a:active {
 .part-details-td-tl {
   border-top: none;
   border-left: none;
-  border-right: 1px solid #888;
-  border-bottom: 1px solid #888;
+  border-right: 1px solid rgb(136, 136, 136);
+  border-bottom: 1px solid rgb(136, 136, 136);
 }
 /* Top-right cell */
 .part-details-td-tr {
   border-top: none;
   border-right: none;
-  border-left: 1px solid #888;
-  border-bottom: 1px solid #888;
+  border-left: 1px solid rgb(136, 136, 136);
+  border-bottom: 1px solid rgb(136, 136, 136);
 }
 /* Bottom-left cell */
 .part-details-td-bl {
   border-bottom: none;
   border-left: none;
-  border-top: 1px solid #888;
-  border-right: 1px solid #888;
+  border-top: 1px solid rgb(136, 136, 136);
+  border-right: 1px solid rgb(136, 136, 136);
 }
 /* Bottom-right cell */
 .part-details-td-br {
   border-bottom: none;
   border-right: none;
-  border-top: 1px solid #888;
-  border-left: 1px solid #888;
+  border-top: 1px solid rgb(136, 136, 136);
+  border-left: 1px solid rgb(136, 136, 136);
+}
+/* Tooltip for randomize button */
+#randomize-tooltip {
+  display: none;
+  position: absolute;
+  background: rgb(85, 107, 47);
+  color: rgb(241, 241, 241);
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 0.85em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+/* Style for the left column (image/filename) cells in the wiki table */
+.part-image-td {
+  width: 120px;
+  height: 120px;
+  text-align: center;
+  vertical-align: middle;
 }
