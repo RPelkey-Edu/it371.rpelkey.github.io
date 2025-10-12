@@ -13,6 +13,7 @@ function getSelectedParts() {
   });
   return selected;
 }
+
 // This function creates and triggers a download of a file with given content and MIME type
 function downloadFile(filename, content, mime) {
   const blob = new Blob([content], { type: mime });
@@ -27,6 +28,7 @@ function downloadFile(filename, content, mime) {
     URL.revokeObjectURL(url);
   }, 100);
 }
+
 // Set up event listeners for download buttons
 document.addEventListener("DOMContentLoaded", function () {
   const btnCsv = document.getElementById("download-selected-csv");
@@ -54,7 +56,18 @@ document.addEventListener("DOMContentLoaded", function () {
       );
     });
   }
+
+  // Set up count button handler here so btnCsv/btnJson are in scope
+  const btn = document.getElementById("count-selected-btn");
+  if (btn) {
+    btn.addEventListener("click", function () {
+      countSelectedParts();
+      if (btnCsv) btnCsv.style.display = "";
+      if (btnJson) btnJson.style.display = "";
+    });
+  }
 });
+
 // Handles counting selected Blades, Ratchets, and Bits in the collection table
 function countSelectedParts() {
   const rows = document.querySelectorAll("#collection-tbody tr");
@@ -74,14 +87,3 @@ function countSelectedParts() {
     "selected-count-result"
   ).textContent = `Selected: Blades: ${bladeCount}, Ratchets: ${ratchetCount}, Bits: ${bitCount}`;
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-  const btn = document.getElementById("count-selected-btn");
-  if (btn) {
-    btn.addEventListener("click", function () {
-      countSelectedParts();
-      if (btnCsv) btnCsv.style.display = "";
-      if (btnJson) btnJson.style.display = "";
-    });
-  }
-});
