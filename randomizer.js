@@ -1,9 +1,9 @@
 //Functions to pull random beyblade parts from JSON file and display them in the table
 document.addEventListener("DOMContentLoaded", function () {
   const btn = document.getElementById("randomize-btn");
-  const partA = document.getElementById("partA");
-  const partB = document.getElementById("partB");
-  const partC = document.getElementById("partC");
+  const blade = document.getElementById("partA");
+  const ratchet = document.getElementById("partB");
+  const bit = document.getElementById("partC");
 
   let partOptions = null;
 
@@ -26,19 +26,19 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("img-partA").style.display = "none";
     document.getElementById("img-partB").style.display = "none";
     document.getElementById("img-partC").style.display = "none";
-    // Roll partC first
-    const rolledC = randomFromArray(partOptions.partC);
-    partC.textContent = rolledC;
-    // If partC is 'Turbo', override partB
-    let rolledB;
-    if (rolledC === "Turbo") {
-      rolledB = "Bit override";
+    // Roll Bit first
+    const rolledBit = randomFromArray(partOptions.Bit);
+    bit.textContent = rolledBit;
+    // If Bit is 'Turbo', override Ratchet
+    let rolledRatchet;
+    if (rolledBit === "Turbo") {
+      rolledRatchet = "Bit override";
     } else {
-      rolledB = randomFromArray(partOptions.partB);
+      rolledRatchet = randomFromArray(partOptions.Ratchet);
     }
-    partB.textContent = rolledB;
-    const rolledA = randomFromArray(partOptions.partA);
-    partA.textContent = rolledA;
+    ratchet.textContent = rolledRatchet;
+    const rolledBlade = randomFromArray(partOptions.Blade);
+    blade.textContent = rolledBlade;
     // Update images for each part
     function partNameToFilename(name) {
       return name.replace(/\s+/g, "_");
@@ -46,14 +46,14 @@ document.addEventListener("DOMContentLoaded", function () {
     var imgA = document.getElementById("img-partA");
     var imgB = document.getElementById("img-partB");
     var imgC = document.getElementById("img-partC");
-    imgA.src = "images/common/" + partNameToFilename(rolledA) + ".jpg";
-    imgA.alt = rolledA;
+    imgA.src = "images/common/" + partNameToFilename(rolledBlade) + ".jpg";
+    imgA.alt = rolledBlade;
     imgA.style.display = "";
-    imgB.src = "images/common/" + partNameToFilename(rolledB) + ".jpg";
-    imgB.alt = rolledB;
+    imgB.src = "images/common/" + partNameToFilename(rolledRatchet) + ".jpg";
+    imgB.alt = rolledRatchet;
     imgB.style.display = "";
-    imgC.src = "images/common/" + partNameToFilename(rolledC) + ".jpg";
-    imgC.alt = rolledC;
+    imgC.src = "images/common/" + partNameToFilename(rolledBit) + ".jpg";
+    imgC.alt = rolledBit;
     imgC.style.display = "";
   });
 
