@@ -16,9 +16,12 @@
     <div id="navbar-container"></div>
     <h1>Beyblade Collection</h1>
     <hr />
+  <button id="count-selected-btn" class="randomize-btn" style="margin-bottom:18px;">Count Selected Parts</button>
+  <button id="download-selected-csv" class="randomize-btn" style="margin-bottom:10px;">Download Selected (CSV)</button>
+  <button id="download-selected-json" class="randomize-btn" style="margin-bottom:18px;">Download Selected (JSON)</button>
+  <div id="selected-count-result" class="randomizer-info"></div>
     <p>
-      An approximation of how I want my collection functionality to appear
-      before adding backend.
+      Check the boxes next to parts, then click the button to count how many you have of each type!
     </p>
     <table class="randomizer-table">
       <thead>
@@ -34,6 +37,7 @@
       </tbody>
     </table>
     <script src="collection-table.js"></script>
+    <script src="collection-count.js"></script>
       </tbody>
     </table>
   </body>
