@@ -41,18 +41,18 @@ document.addEventListener("DOMContentLoaded", function () {
     blade.textContent = rolledBlade;
     // Update images for each part
     function partNameToFilename(name) {
-      return name.replace(/\s+/g, "_");
+      return name.replace(/\s+/g, "_") + ".jpg";
     }
     var imgA = document.getElementById("img-partA");
     var imgB = document.getElementById("img-partB");
     var imgC = document.getElementById("img-partC");
-    imgA.src = "images/common/" + partNameToFilename(rolledBlade) + ".jpg";
+    imgA.src = "images/parts/Blade/" + partNameToFilename(rolledBlade);
     imgA.alt = rolledBlade;
     imgA.style.display = "";
-    imgB.src = "images/common/" + partNameToFilename(rolledRatchet) + ".jpg";
+    imgB.src = "images/parts/Ratchet/" + partNameToFilename(rolledRatchet);
     imgB.alt = rolledRatchet;
     imgB.style.display = "";
-    imgC.src = "images/common/" + partNameToFilename(rolledBit) + ".jpg";
+    imgC.src = "images/parts/Bit/" + partNameToFilename(rolledBit);
     imgC.alt = rolledBit;
     imgC.style.display = "";
   });
