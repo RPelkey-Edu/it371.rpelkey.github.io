@@ -1,4 +1,5 @@
 // --- Download CSV/JSON of selected parts ---
+
 // This function gathers all selected parts from the collection table
 function getSelectedParts() {
   const rows = document.querySelectorAll("#collection-tbody tr");
@@ -27,6 +28,29 @@ function downloadFile(filename, content, mime) {
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
   }, 100);
+}
+
+// Handles counting selected Blades, Ratchets, and Bits in the collection table
+function countSelectedParts() {
+  const rows = document.querySelectorAll("#collection-tbody tr");
+  let bladeCount = 0,
+    ratchetCount = 0,
+    bitCount = 0;
+  rows.forEach((row) => {
+    const checkbox = row.querySelector('input[type="checkbox"]');
+    const partType = row.children[1]?.textContent;
+    if (checkbox && checkbox.checked) {
+      if (partType === "Blade") bladeCount++;
+      else if (partType === "Ratchet") ratchetCount++;
+      else if (partType === "Bit") bitCount++;
+    }
+  });
+  document.getElementById(
+    "selected-count-result"
+  ).textContent = `Selected: Blades: ${bladeCount}, Ratchets: ${ratchetCount}, Bits: ${bitCount}`;
+  // Show extra message after counting
+  document.getElementById("count-extra-message").textContent =
+    "Use the buttons above to download your selected parts as formatted CSV or JSON!";
 }
 
 // Set up event listeners for download buttons
@@ -67,23 +91,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
-
-// Handles counting selected Blades, Ratchets, and Bits in the collection table
-function countSelectedParts() {
-  const rows = document.querySelectorAll("#collection-tbody tr");
-  let bladeCount = 0,
-    ratchetCount = 0,
-    bitCount = 0;
-  rows.forEach((row) => {
-    const checkbox = row.querySelector('input[type="checkbox"]');
-    const partType = row.children[1]?.textContent;
-    if (checkbox && checkbox.checked) {
-      if (partType === "Blade") bladeCount++;
-      else if (partType === "Ratchet") ratchetCount++;
-      else if (partType === "Bit") bitCount++;
-    }
-  });
-  document.getElementById(
-    "selected-count-result"
-  ).textContent = `Selected: Blades: ${bladeCount}, Ratchets: ${ratchetCount}, Bits: ${bitCount}`;
-}
