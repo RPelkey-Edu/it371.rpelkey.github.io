@@ -1,4 +1,5 @@
 // --- Download CSV/JSON of selected parts ---
+// This function gathers all selected parts from the collection table
 function getSelectedParts() {
   const rows = document.querySelectorAll("#collection-tbody tr");
   const selected = [];
