@@ -1,9 +1,3 @@
-.randomizer-table tr:first-child {
-  height: auto;
-}
-.randomizer-table tr:nth-child(2) {
-  height: 140px;
-}
 /* Import Roboto Medium font from Google Fonts */
 @import url("https://fonts.googleapis.com/css?family=Roboto:500&display=swap");
 /* Set base font and background for the entire page */
@@ -69,6 +63,18 @@ nav ul li a:active {
   background: rgb(56, 142, 60);
   background: rgb(56, 142, 60);
 }
+/* Tooltip for randomize button */
+#randomize-tooltip {
+  display: none;
+  position: absolute;
+  background: rgb(85, 107, 47);
+  color: rgb(241, 241, 241);
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 0.85em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
 /* Center the randomizer info text */
 .randomizer-info {
   margin-top: 24px;
@@ -88,7 +94,7 @@ nav ul li a:active {
   width: 440px;
 }
 .randomizer-table td {
-  width: 140px;
+  width: 150px;
 }
 .randomizer-table tr {
   border-radius: 12px;
@@ -107,6 +113,12 @@ nav ul li a:active {
 }
 .randomizer-td:not(:last-child) {
   border-right-width: 0;
+}
+.randomizer-table tr:first-child {
+  height: auto;
+}
+.randomizer-table tr:nth-child(2) {
+  height: 150px;
 }
 /* Style for the inner part details table in the wiki */
 .part-details-table {
@@ -148,18 +160,6 @@ nav ul li a:active {
   border-right: none;
   border-top: 1px solid rgb(136, 136, 136);
   border-left: 1px solid rgb(136, 136, 136);
-}
-/* Tooltip for randomize button */
-#randomize-tooltip {
-  display: none;
-  position: absolute;
-  background: rgb(85, 107, 47);
-  color: rgb(241, 241, 241);
-  padding: 8px 14px;
-  border-radius: 6px;
-  font-size: 0.85em;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
 }
 /* Style for the left column (image/filename) cells in the wiki table */
 .part-image-td {
