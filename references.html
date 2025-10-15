@@ -12,22 +12,25 @@
   <!-- Main page content -->
   <body>
     <!-- Navigation bar element-->
-    <nav>
-      <ul>
-        <!-- Stuck with directing to index.html due to Github handling "/" poorly -->
-        <li><a href="index.html">Home</a></li>
-        <li><a href="beyblade-collection.html">Collection</a></li>
-        <li><a href="beyblade-randomizer.html">Randomizer</a></li>
-        <li><a href="beyblade-wiki.html">Wiki</a></li>
-        <li><a href="references.html">References</a></li>
-      </ul>
-    </nav>
-    <h1>References</h1>
+    <div class="header-flex-row">
+      <h1 style="margin: 0">References</h1>
+      <div id="navbar-container"></div>
+    </div>
+    <script src="navbar.js"></script>
     <hr />
-    <p>
-      My plans for other pages will require substantial amounts of content from
-      outside sources.
-    </p>
-    <p>This page will exist to give proper attribution to those sources.</p>
+    <div class="reference-center-container">
+      <div class="reference-box">
+        All images on this site have been sourced from
+        <a href="https://beyblade.fandom.com/" target="_blank"
+          >beyblade.fandom.com</a
+        >
+        in a Fair Use manner. <br /><br />
+        Some images are copyright Hasbro, Inc. and are used here for
+        educational, non-commercial purposes only.
+        <br /><br />
+        Some images are copyright Tomy Company, Ltd. and are used here for
+        educational, non-commercial purposes only.
+      </div>
+    </div>
   </body>
 </html>

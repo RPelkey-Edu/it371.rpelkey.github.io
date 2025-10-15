@@ -13,105 +13,54 @@
   <body>
     <!-- JS dynamic navbar will be loaded into this container -->
     <script src="navbar.js"></script>
-    <div id="navbar-container"></div>
-    <h1>Beyblade Wiki</h1>
+    <div class="header-flex-row">
+      <h1 style="margin: 0">Beyblade Wiki</h1>
+      <div id="navbar-container"></div>
+    </div>
     <hr />
-    <p>
-      This is the intended location for my beyblade wiki-like functionality.
-    </p>
-    <!-- Blades Table -->
-    <h2>Blades</h2>
-    <table class="randomizer-table" style="margin-top: 24px">
-      <thead>
-        <tr>
-          <th>Image</th>
-          <th>Details</th>
-        </tr>
-      </thead>
-      <tbody id="blade-tbody">
-        <!-- Blade rows will be inserted by JS -->
-      </tbody>
-    </table>
-    <!-- Ratchets Table -->
-    <h2>Ratchets</h2>
-    <table class="randomizer-table" style="margin-top: 24px">
-      <thead>
-        <tr>
-          <th>Image</th>
-          <th>Details</th>
-        </tr>
-      </thead>
-      <tbody id="ratchet-tbody">
-        <!-- Ratchet rows will be inserted by JS -->
-      </tbody>
-    </table>
-    <!-- Bits Table -->
-    <h2>Bits</h2>
-    <table class="randomizer-table" style="margin-top: 24px">
-      <thead>
-        <tr>
-          <th>Image</th>
-          <th>Details</th>
-        </tr>
-      </thead>
-      <tbody id="bit-tbody">
-        <!-- Bit rows will be inserted by JS -->
-      </tbody>
-    </table>
-    <script>
-      // Helper to get image filename
-      function partNameToFilename(name) {
-        return name.replace(/\s+/g, "") + ".webp";
-      }
-      fetch("randomizer-parts.json")
-        .then((r) => r.json())
-        .then((parts) => {
-          const sections = [
-            { type: "Blade", list: parts.Blade, tbodyId: "blade-tbody" },
-            { type: "Ratchet", list: parts.Ratchet, tbodyId: "ratchet-tbody" },
-            { type: "Bit", list: parts.Bit, tbodyId: "bit-tbody" },
-          ];
-          sections.forEach(({ type, list, tbodyId }) => {
-            const tbody = document.getElementById(tbodyId);
-            list.forEach((name) => {
-              const imgFile = partNameToFilename(name);
-              const imgPath = `images/parts/${type}/${imgFile}`;
-              const tr = document.createElement("tr");
-              tr.innerHTML = `
-              <td class="randomizer-td part-image-td">
-                <a href="${imgPath}" target="_blank">
-                  <img src="${imgPath}" alt="${name}" style="max-width:120px;max-height:120px;display:block;margin:0 auto 4px auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';" />
-                </a>
-                <a href="${imgPath}" target="_blank" style="display:none;">${imgFile}</a>
-              </td>
-              <td class="randomizer-td">
-                <div class="part-details-vertical">
-                  <div><strong>Name:</strong> ${name}</div>
-                  <div><strong>Class:</strong> ${type}</div>
-                  <div><strong>Type:</strong> ${(() => {
-                    // Demo: assign type by index for visual variety
-                    const types = ["Attack", "Defense", "Stamina", "Balance"];
-                    if (type === "Blade") return types[list.indexOf(name) % 4];
-                    if (type === "Ratchet")
-                      return types[list.indexOf(name) % 4];
-                    if (type === "Bit") return types[list.indexOf(name) % 4];
-                    return "";
-                  })()}</div>
-                </div>
-              </td>
-            `;
-              tbody.appendChild(tr);
-            });
-          });
-        });
+    <!-- Flex row for the three tables -->
+    <div class="wiki-flex-tables">
+      <div class="wiki-table-col">
+        <table class="randomizer-table">
+          <thead>
+            <tr>
+              <th>Blades</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody id="blade-tbody">
+            <!-- Blade rows will be inserted by JS -->
+          </tbody>
+        </table>
+      </div>
+      <div class="wiki-table-col">
+        <table class="randomizer-table">
+          <thead>
+            <tr>
+              <th>Ratchets</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody id="ratchet-tbody">
+            <!-- Ratchet rows will be inserted by JS -->
+          </tbody>
+        </table>
+      </div>
+      <div class="wiki-table-col">
+        <table class="randomizer-table">
+          <thead>
+            <tr>
+              <th>Bits</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody id="bit-tbody">
+            <!-- Bit rows will be inserted by JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="collection-table.js"></script>
     </script>
-    <p style="margin-top: 32px; color: #888; font-size: 0.95em">
-      I'm currently looking at
-      <a href="https://github.com/gollum/gollum" target="_blank">Gollum</a> or
-      <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank"
-        >MkDocs Material</a
-      >
-      as my wiki engine options.
-    </p>
   </body>
 </html>
