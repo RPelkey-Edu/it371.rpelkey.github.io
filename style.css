@@ -1,3 +1,9 @@
+.randomizer-table tr:first-child {
+  height: auto;
+}
+.randomizer-table tr:nth-child(2) {
+  height: 140px;
+}
 /* Import Roboto Medium font from Google Fonts */
 @import url("https://fonts.googleapis.com/css?family=Roboto:500&display=swap");
 /* Set base font and background for the entire page */
@@ -78,8 +84,11 @@ nav ul li a:active {
   background: rgb(241, 241, 241);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
-  min-width: 480px;
-  max-width: 700px;
+  table-layout: fixed;
+  width: 440px;
+}
+.randomizer-table td {
+  width: 140px;
 }
 .randomizer-table tr {
   border-radius: 12px;
