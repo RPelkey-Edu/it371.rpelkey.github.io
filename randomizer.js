@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
     blade.textContent = rolledBlade;
     // Update images for each part
     function partNameToFilename(name) {
-      return name.replace(/\s+/g, "_") + ".jpg";
+      return name.replace(/\s+/g, "") + ".webp";
     }
     var imgA = document.getElementById("img-partA");
     var imgB = document.getElementById("img-partB");

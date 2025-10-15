@@ -1,6 +1,6 @@
 // Dynamically generate Beyblade Collection table from randomizer-parts.json
 function partNameToFilename(name) {
-  return name.replace(/\s+/g, "_") + ".jpg";
+  return name.replace(/\s+/g, "") + ".webp";
 }
 
 document.addEventListener("DOMContentLoaded", function () {
