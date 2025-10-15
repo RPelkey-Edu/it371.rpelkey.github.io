@@ -1,8 +1,8 @@
-// Dynamically generate Beyblade Collection table from randomizer-parts.json
+// Convert part name to corresponding image filename
 function partNameToFilename(name) {
   return name.replace(/\s+/g, "") + ".webp";
 }
-
+// Dynamically generate Beyblade Collection table from randomizer-parts.json
 document.addEventListener("DOMContentLoaded", function () {
   fetch("randomizer-parts.json")
     .then((response) => response.json())
@@ -23,8 +23,10 @@ document.addEventListener("DOMContentLoaded", function () {
             <td class=\"randomizer-td\">${partType}</td>
             <td class=\"randomizer-td\">${name}</td>
             <td class=\"randomizer-td\">
-              <img src=\"${imgPath}\" alt=\"${name}\" style=\"max-width:80px;max-height:80px;display:block;margin:0 auto 4px auto;\" onerror=\"this.style.display='none'\" />
-              <a class=\"img-link\" href=\"${imgPath}\" target=\"_blank\">${imgFile}</a>
+              <a class=\"img-link\" href=\"${imgPath}\" target=\"_blank\">
+                <img src=\"${imgPath}\" alt=\"${name}\" style=\"max-width:120px;max-height:120px;display:block;margin:0 auto 4px auto;\" onerror=\"this.style.display='none'; this.nextElementSibling.style.display='inline';\" />
+              </a>
+              <a class=\"img-link\" href=\"${imgPath}\" target=\"_blank\" style=\"display:none;\">${imgFile}</a>
             </td>
           `;
           tbody.appendChild(tr);
