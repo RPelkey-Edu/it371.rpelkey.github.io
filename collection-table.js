@@ -2,72 +2,44 @@
 function partNameToFilename(name) {
   return name.replace(/\s+/g, "") + ".webp";
 }
-// Dynamically generate Beyblade Collection table from randomizer-parts.json
-document.addEventListener("DOMContentLoaded", function () {
-  fetch("randomizer-parts.json")
-    .then((response) => response.json())
-    .then((parts) => {
-      const tbody = document.getElementById("collection-tbody");
-      const addRows = (partType, partList) => {
-        partList.forEach((name, idx) => {
-          const tr = document.createElement("tr");
-          const imgFile = partNameToFilename(name);
-          // Determine folder for each part type
-          let folder = "";
-          if (partType === "Blade") folder = "Blade";
-          else if (partType === "Ratchet") folder = "Ratchet";
-          else if (partType === "Bit") folder = "Bit";
-          const imgPath = `images/parts/${folder}/${imgFile}`;
-          tr.innerHTML = `
-            <td class=\"randomizer-td\"><input type=\"checkbox\" /></td>
-            <td class=\"randomizer-td\">${partType}</td>
-            <td class=\"randomizer-td\">${name}</td>
-            <td class=\"randomizer-td\">
-              <a class=\"img-link\" href=\"${imgPath}\" target=\"_blank\">
-                <img src=\"${imgPath}\" alt=\"${name}\" style=\"max-width:120px;max-height:120px;display:block;margin:0 auto 4px auto;\" onerror=\"this.style.display='none'; this.nextElementSibling.style.display='inline';\" />
-              </a>
-              <a class=\"img-link\" href=\"${imgPath}\" target=\"_blank\" style=\"display:none;\">${imgFile}</a>
-            </td>
-          `;
-          tbody.appendChild(tr);
-        });
-      };
-      addRows("Blade", parts.Blade);
-      addRows("Ratchet", parts.Ratchet);
-      addRows("Bit", parts.Bit);
-    });
-});
 // Dynamically generate Beyblade Collection table and Wiki tables from randomizer-parts.json
 document.addEventListener("DOMContentLoaded", function () {
   fetch("randomizer-parts.json")
     .then((response) => response.json())
     .then((parts) => {
       // Collection Table
-      const collectionTbody = document.getElementById("collection-tbody");
-      if (collectionTbody) {
-        const addRows = (partType, partList) => {
-          partList.forEach((name, idx) => {
-            const tr = document.createElement("tr");
-            const imgFile = partNameToFilename(name);
-            // Determine folder for each part type
-            let folder = "";
-            if (partType === "Blade") folder = "Blade";
-            else if (partType === "Ratchet") folder = "Ratchet";
-            else if (partType === "Bit") folder = "Bit";
-            const imgPath = `images/parts/${folder}/${imgFile}`;
-            tr.innerHTML = `
-              <td class=\"randomizer-td\"><input type=\"checkbox\" /></td>
-              <td class=\"randomizer-td\">${partType}</td>
-              <td class=\"randomizer-td\">${name}</td>
-              <td class=\"randomizer-td\">
-                <a class=\"img-link\" href=\"${imgPath}\" target=\"_blank\">\n                  <img src=\"${imgPath}\" alt=\"${name}\" style=\"max-width:120px;max-height:120px;display:block;margin:0 auto 4px auto;\" onerror=\"this.style.display='none'; this.nextElementSibling.style.display='inline';\" />\n                </a>\n                <a class=\"img-link\" href=\"${imgPath}\" target=\"_blank\" style=\"display:none;\">${imgFile}</a>\n              </td>\n            `;
-            collectionTbody.appendChild(tr);
-          });
-        };
-        addRows("Blade", parts.Blade);
-        addRows("Ratchet", parts.Ratchet);
-        addRows("Bit", parts.Bit);
-      }
+      // Collection Page: Three separate tables for Blade, Ratchet, Bit
+      const collectionBladeTbody = document.getElementById(
+        "collection-blade-tbody"
+      );
+      const collectionRatchetTbody = document.getElementById(
+        "collection-ratchet-tbody"
+      );
+      const collectionBitTbody = document.getElementById(
+        "collection-bit-tbody"
+      );
+      const addCollectionRows = (tbody, partType, partList) => {
+        if (!tbody) return;
+        partList.forEach((name) => {
+          const imgFile = partNameToFilename(name);
+          const imgPath = `images/parts/${partType}/${imgFile}`;
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+              <td class="randomizer-td"><input type="checkbox" /></td>
+              <td class="randomizer-td">${name}</td>
+              <td class="randomizer-td">
+                <a class="img-link" href="${imgPath}" target="_blank">
+                  <img src="${imgPath}" alt="${name}" style="max-width:120px;max-height:120px;display:block;margin:0 auto 4px auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';" />
+                </a>
+                <a class="img-link" href="${imgPath}" target="_blank" style="display:none;">${imgFile}</a>
+              </td>
+            `;
+          tbody.appendChild(tr);
+        });
+      };
+      addCollectionRows(collectionBladeTbody, "Blade", parts.Blade);
+      addCollectionRows(collectionRatchetTbody, "Ratchet", parts.Ratchet);
+      addCollectionRows(collectionBitTbody, "Bit", parts.Bit);
 
       // Wiki Tables
       const bladeTbody = document.getElementById("blade-tbody");

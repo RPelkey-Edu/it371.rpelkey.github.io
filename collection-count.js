@@ -1,16 +1,22 @@
 // --- Download CSV/JSON of selected parts ---
 
-// This function gathers all selected parts from the collection table
+// This function gathers all selected parts from the three collection tables
 function getSelectedParts() {
-  const rows = document.querySelectorAll("#collection-tbody tr");
+  const tables = [
+    { id: "collection-blade-tbody", part: "Blade" },
+    { id: "collection-ratchet-tbody", part: "Ratchet" },
+    { id: "collection-bit-tbody", part: "Bit" },
+  ];
   const selected = [];
-  rows.forEach((row) => {
-    const checkbox = row.querySelector('input[type="checkbox"]');
-    const partType = row.children[1]?.textContent;
-    const name = row.children[2]?.textContent;
-    if (checkbox && checkbox.checked) {
-      selected.push({ part: partType, name });
-    }
+  tables.forEach(({ id, part }) => {
+    const rows = document.querySelectorAll(`#${id} tr`);
+    rows.forEach((row) => {
+      const checkbox = row.querySelector('input[type="checkbox"]');
+      const name = row.children[1]?.textContent;
+      if (checkbox && checkbox.checked) {
+        selected.push({ part, name });
+      }
+    });
   });
   return selected;
 }
@@ -30,20 +36,25 @@ function downloadFile(filename, content, mime) {
   }, 100);
 }
 
-// Handles counting selected Blades, Ratchets, and Bits in the collection table
+// Handles counting selected Blades, Ratchets, and Bits in the new collection tables
 function countSelectedParts() {
-  const rows = document.querySelectorAll("#collection-tbody tr");
   let bladeCount = 0,
     ratchetCount = 0,
     bitCount = 0;
-  rows.forEach((row) => {
+  // Count Blades
+  document.querySelectorAll("#collection-blade-tbody tr").forEach((row) => {
     const checkbox = row.querySelector('input[type="checkbox"]');
-    const partType = row.children[1]?.textContent;
-    if (checkbox && checkbox.checked) {
-      if (partType === "Blade") bladeCount++;
-      else if (partType === "Ratchet") ratchetCount++;
-      else if (partType === "Bit") bitCount++;
-    }
+    if (checkbox && checkbox.checked) bladeCount++;
+  });
+  // Count Ratchets
+  document.querySelectorAll("#collection-ratchet-tbody tr").forEach((row) => {
+    const checkbox = row.querySelector('input[type="checkbox"]');
+    if (checkbox && checkbox.checked) ratchetCount++;
+  });
+  // Count Bits
+  document.querySelectorAll("#collection-bit-tbody tr").forEach((row) => {
+    const checkbox = row.querySelector('input[type="checkbox"]');
+    if (checkbox && checkbox.checked) bitCount++;
   });
   document.getElementById(
     "selected-count-result"
