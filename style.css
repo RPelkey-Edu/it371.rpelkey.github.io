@@ -266,12 +266,10 @@ nav ul li a:active {
 }
 .randomizer-table tr {
   border-radius: 12px;
-}
-.randomizer-table tr:first-child {
-  height: auto;
-}
-.randomizer-table tr:nth-child(2) {
   height: 150px;
+}
+.randomizer-table thead tr {
+  height: auto;
 }
 .randomizer-td {
   padding: 12px 18px;
@@ -323,34 +321,6 @@ nav ul li a:active {
   font-size: 1em;
   font-weight: 500;
   text-align: left;
-}
-/* Top-left cell */
-.part-details-td-tl {
-  border-top: none;
-  border-left: none;
-  border-right: 1px solid rgb(136, 136, 136);
-  border-bottom: 1px solid rgb(136, 136, 136);
-}
-/* Top-right cell */
-.part-details-td-tr {
-  border-top: none;
-  border-right: none;
-  border-left: 1px solid rgb(136, 136, 136);
-  border-bottom: 1px solid rgb(136, 136, 136);
-}
-/* Bottom-left cell */
-.part-details-td-bl {
-  border-bottom: none;
-  border-left: none;
-  border-top: 1px solid rgb(136, 136, 136);
-  border-right: 1px solid rgb(136, 136, 136);
-}
-/* Bottom-right cell */
-.part-details-td-br {
-  border-bottom: none;
-  border-right: none;
-  border-top: 1px solid rgb(136, 136, 136);
-  border-left: 1px solid rgb(136, 136, 136);
 }
 /* Style for the left column (image/filename) cells in the wiki table */
 .part-image-td {
