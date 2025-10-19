@@ -68,9 +68,30 @@ function countSelectedParts() {
 document.addEventListener("DOMContentLoaded", function () {
   const btnCsv = document.getElementById("download-selected-csv");
   const btnJson = document.getElementById("download-selected-json");
-  // Hide download buttons by default
+  const nameContainer = document.getElementById("download-name-container");
+  const nameInput = document.getElementById("download-name-input");
+  const nameLabel = document.getElementById("download-name-label");
+  // Hide download buttons and name input by default
   if (btnCsv) btnCsv.style.display = "none";
   if (btnJson) btnJson.style.display = "none";
+  if (nameContainer) nameContainer.style.display = "none";
+
+  function getFileName(ext) {
+    let val = nameInput && nameInput.value.trim();
+    if (!val) return `selected_parts.${ext}`;
+    // Remove illegal filename characters for most OSes
+    val = val.replace(/[/\\?%*:|"<>]/g, "_");
+    return val.endsWith(`.${ext}`) ? val : `${val}.${ext}`;
+  }
+
+  function afterDownload(filename) {
+    if (nameInput) nameInput.value = "";
+    if (nameLabel) nameLabel.textContent = `File ${filename} downloaded`;
+    setTimeout(() => {
+      if (nameLabel) nameLabel.textContent = "Enter download file name here";
+    }, 2500);
+  }
+
   if (btnCsv) {
     btnCsv.addEventListener("click", function () {
       const selected = getSelectedParts();
@@ -78,17 +99,21 @@ document.addEventListener("DOMContentLoaded", function () {
       selected.forEach((item) => {
         csv += `"${item.part}","${item.name}"\n`;
       });
-      downloadFile("selected_parts.csv", csv, "text/csv");
+      const filename = getFileName("csv");
+      downloadFile(filename, csv, "text/csv");
+      afterDownload(filename);
     });
   }
   if (btnJson) {
     btnJson.addEventListener("click", function () {
       const selected = getSelectedParts();
+      const filename = getFileName("json");
       downloadFile(
-        "selected_parts.json",
+        filename,
         JSON.stringify(selected, null, 2),
         "application/json"
       );
+      afterDownload(filename);
     });
   }
 
@@ -99,6 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
       countSelectedParts();
       if (btnCsv) btnCsv.style.display = "";
       if (btnJson) btnJson.style.display = "";
+      if (nameContainer) nameContainer.style.display = "";
     });
   }
 });

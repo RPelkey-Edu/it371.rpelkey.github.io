@@ -294,6 +294,23 @@ nav ul li a:active {
   margin: 6px;
   cursor: pointer;
 }
+/* Download name input and label styles */
+.download-name-container {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.download-name-input {
+  font-size: 1.1em;
+  padding: 6px 10px;
+  border-radius: 5px;
+  border: 1px solid #bbb;
+  width: 220px;
+}
+.download-name-label {
+  font-size: 0.98em;
+  color: #555;
+  margin-top: 2px;
+}
 /* Style for the inner part details table in the wiki */
 .part-details-table {
   width: 100%;
