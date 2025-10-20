@@ -9,13 +9,13 @@ body {
 /* Explicit base styles for text elements for cross-browser consistency */
 body {
   font-size: 17px;
-  color: #222;
+  color: rgb(34, 34, 34);
   line-height: 1.6;
 }
 p {
   margin: 1em 0;
   font-size: 1em;
-  color: #222;
+  color: rgb(34, 34, 34);
   line-height: 1.6;
 }
 h1,
@@ -301,12 +301,12 @@ nav ul li a:active {
   font-size: 1.1em;
   padding: 6px 10px;
   border-radius: 5px;
-  border: 1px solid #bbb;
+  border: 1px solid rgb(187, 187, 187);
   width: 220px;
 }
 .download-name-label {
   font-size: 0.98em;
-  color: #555;
+  color: rgb(85, 85, 85);
   margin-top: 2px;
 }
 /* Style for the inner part details table in the wiki */
@@ -369,4 +369,22 @@ nav ul li a:active {
   max-width: 90vw;
   min-width: 320px;
   box-sizing: border-box;
+}
+/* Footer styles mimicking navbar */
+.site-footer {
+  width: 100%;
+  text-align: center;
+  margin: 32px 0 12px 0;
+  font-size: 1.08em;
+  color: rgb(58, 73, 69);
+  background: rgb(216, 215, 215);
+  border-top: 2px solid rgb(204, 204, 204);
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 18px 0 10px 0;
+}
+.site-footer .footer-link {
+  color: rgb(58, 73, 69);
+  text-decoration: underline;
+  transition: box-shadow 0.2s, border-color 0.2s;
 }
